@@ -1,14 +1,14 @@
 
-//------------------Class Geometrie Schablone definieren------------------//
+//------------------Class Rechteck----------------------------------------//
 
 import java.util.Random;
 
-class Geometrie {
+class Rechteck {
     String name;
     int breite;
     int hoehe;
     int masse;
-    int radius;
+
 
 //-----------------NON-STATIC METHOD dimensionen ändern-------------------//
 
@@ -17,7 +17,12 @@ class Geometrie {
         hoehe=newHoehe;
     }
 }
+//------------------Class Kreis----------------------------------------//
 
+class Kreis {
+    String name;
+    int radius;
+}
 
 public class GeometrieAufgabe {
 
@@ -25,46 +30,44 @@ public class GeometrieAufgabe {
 
 //------------------------RECHTECK Objekt erstellen______________________________//
 
-        Geometrie rechteck = new Geometrie();
-        rechteck.name = "Rechteck";
-        rechteck.breite = (int)Math.floor(Math.random() * (20 - 1 + 1) + 1);
-        rechteck.hoehe = 3;
-        rechteck.masse = rechteck.hoehe * rechteck.breite;
-        rechtecke100(rechteck);
+        Rechteck r = new Rechteck();
+        r.name = "Rechteck";
+        r.breite = (int) Math.floor(Math.random() * (20 - 1 + 1) + 1);
+        r.hoehe = 3;
+        r.masse = r.hoehe * r.breite;
 
+//------------------------Kreis Objekt erstellen______________________________//
 
-//-------------------------KREIS Objekt erstellen-----------------------------//
-
-        Geometrie kreis = new Geometrie();
+        Kreis kreis = new Kreis();
         kreis.name = "Kreis";
         kreis.radius = 5;
 
         System.out.println(kreis.name + ". R = " + kreis.radius);
-    }
-//----------------------100 Rechteck print-------------------------------------------//
 
-    static void rechtecke100(Geometrie g) {
+//------------------------Static Method - Dimensionen verändern aufrufen______________________________//
+
+        dimensionStatic(r, 34, 56);
+    }
+
+    static void dimensionStatic (Rechteck r, int x, int y){
+            r.breite = x;
+            r.hoehe = y;
+        }
+//-------------------------------100 Rechteck print---------------------------------------------//
+
+    static void rechtecke100(Rechteck r){
         Random rand = new Random();
-        int max=20;
-        int min=1;
+        int max = 20;
+        int min = 1;
 
         for (int i = 1; i <= 100; i++) {
-            g.breite = rand.nextInt(max- min + 1) + min;
-            g.hoehe = rand.nextInt(max- min + 1) + min;
-            System.out.println(i + ". " + g.name + " (" + g.breite + " X " + g.hoehe + ")");
+            r.breite = rand.nextInt(max - min + 1) + min;
+            r.hoehe = rand.nextInt(max - min + 1) + min;
+            System.out.println(i + ". " + r.name + " (" + r.breite + " X " + r.hoehe + ")");
         }
-
- //--------------------Aufruf STATIC METHOD Dimension verändern-------------------------//
-
-   // dimensionStatic(34,56);
-    }
-
-    static void dimensionStatic(Geometrie r, int x, int y){
-        r.breite= x;
-        r.hoehe=y;
-
 
     }
 }
+
 
 
